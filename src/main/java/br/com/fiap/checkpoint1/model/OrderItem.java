@@ -12,12 +12,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartItem {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String product;
+    private Integer quantity;
+    private Double value;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
 
 }

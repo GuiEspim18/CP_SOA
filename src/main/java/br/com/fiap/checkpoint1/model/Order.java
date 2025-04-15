@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "order")
@@ -22,8 +23,7 @@ public class Order {
 
     private Date date;
 
-    @OneToOne(mappedBy = "id")
-    @JoinColumn(name = "shopping_cart_id")
-    private ShoppingCart shoppingCart;
+    @OneToMany(mappedBy = "id")
+    private List<OrderItem> item;
 
 }
