@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +23,17 @@ public class Order {
 
     private Date date;
 
-    @OneToMany(mappedBy = "id")
-    private List<OrderItem> item;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    public List<Product> products;
 
 }
