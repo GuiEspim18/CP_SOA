@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 
 @Entity
@@ -18,13 +17,13 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    public String name;
-    public String surname;
-    public String email;
-    public String telephone;
+    private String name;
+    private String surname;
+    private String email;
+    private String telephone;
 
-    @OneToMany(mappedBy = "id")
-    public List<Order> orders;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }
